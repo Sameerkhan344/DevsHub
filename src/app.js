@@ -18,17 +18,18 @@ const PORT = 8080;
 //     res.send("Hello world")
 // })
 
-app.get("/user",(req,res)=>{
+app.get("/user/:userId/:name/:adddress",(req,res)=>{
+    console.log(req.params)
     res.send({firstName:"sameer", lastName:"khan"})
 })
 
-app.post("/user",(req,res)=>{
-    res.send("Data successfully save to the database!")
-})
+// app.post("/user",(req,res)=>{
+//     res.send("Data successfully save to the database!")
+// })
 
-app.delete("/user",(req,res)=>{
-    res.send("Deleted Successfully")
-})
+// app.delete("/user",(req,res)=>{
+//     res.send("Deleted Successfully")
+// })
 
 app.listen(PORT, () => {
     console.log(`server is running on port ${PORT}`)
