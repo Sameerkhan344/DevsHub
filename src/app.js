@@ -18,10 +18,10 @@ const PORT = 8080;
 //     res.send("Hello world")
 // })
 
-app.get("/user/:userId/:name/:adddress",(req,res)=>{
-    console.log(req.params)
-    res.send({firstName:"sameer", lastName:"khan"})
-})
+// app.get("/user/:userId/:name/:adddress",(req,res)=>{
+//     console.log(req.params)
+//     res.send({firstName:"sameer", lastName:"khan"})
+// })
 
 // app.post("/user",(req,res)=>{
 //     res.send("Data successfully save to the database!")
@@ -30,6 +30,16 @@ app.get("/user/:userId/:name/:adddress",(req,res)=>{
 // app.delete("/user",(req,res)=>{
 //     res.send("Deleted Successfully")
 // })
+
+app.use("/user", [(req, res, next) => {
+    console.log("req Handler routes");
+    // next();
+    res.send("Route");
+}, (req, res, next) => {
+    console.log("2nd handler route");
+    res.send("2nd route")
+    // next();
+}])
 
 app.listen(PORT, () => {
     console.log(`server is running on port ${PORT}`)
