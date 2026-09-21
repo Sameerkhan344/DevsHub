@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 
 const PORT = 8080;
-
+const { adminAuth, userAuth } = require("./middlewares/auth")
 
 // app.use("/test", (req, res) => {
 //     res.send("Hello test")
@@ -31,15 +31,29 @@ const PORT = 8080;
 //     res.send("Deleted Successfully")
 // })
 
-app.use("/user", [(req, res, next) => {
-    console.log("req Handler routes");
+// app.use("/user", [(req, res, next) => {
+//     console.log("req Handler routes");
+//     // next();
+//     res.send("Route");
+// }, (req, res, next) => {
+//     console.log("2nd handler route");
+//     res.send("2nd route")
+//     // next();
+// }])
+
+app.use("/admin", adminAuth);
+app.get("/user", userAuth, (req, res, next) => {
+    res.send("user data sent");
+});
+
+app.get("/admin/getAllData", (req, res, next) => {
+    res.send("Get all the data");
     // next();
-    res.send("Route");
-}, (req, res, next) => {
-    console.log("2nd handler route");
-    res.send("2nd route")
-    // next();
-}])
+});
+
+app.get("/admin/deleteAllData", (req, res, next) => {
+    res.send("Deleted all data")
+})
 
 app.listen(PORT, () => {
     console.log(`server is running on port ${PORT}`)

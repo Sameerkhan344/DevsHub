@@ -17,3 +17,18 @@
 - Play with routes and route extension ex. /hello , /hello/2 , /test, /xyz
 - Order of the routes matter a lot
 - Install the postan app and make workspace/collection > test API call
+- write a  logic to handler route GET, POST, PUT, PATH, DELETE and test them on Postman
+- Eplore routing and use  of ?, +, (), * in the routes
+- use of regex in the routes /a/,  /.*fly$/
+- Reading the query params in the routes
+- Reading the dynamic routes
+
+- Multiple route handlers - Play with the code
+- next(); function
+- next() function and error along with the res.send() 
+- app.use("/route", rH, [rH2,rH3],rH4,rH5);
+- What is Middlewares? why do we need it
+- How express JS basically handles the requests behind the scenes.
+- diffrence between app.use and app.all
+- write a dummy  auth middleware for admin
+- write a dummy auth middleware for all user routes, expect /user/login
