@@ -41,19 +41,21 @@ const { adminAuth, userAuth } = require("./middlewares/auth")
 //     // next();
 // }])
 
-app.use("/admin", adminAuth);
-app.get("/user", userAuth, (req, res, next) => {
-    res.send("user data sent");
-});
-
-app.get("/admin/getAllData", (req, res, next) => {
-    res.send("Get all the data");
-    // next();
-});
-
-app.get("/admin/deleteAllData", (req, res, next) => {
-    res.send("Deleted all data")
+app.get("/getUserData", ( req, res) => {
+    // try {
+        throw new Error("sfsdfs");
+        res.send("user data sent")
+        
+    // } catch (err) {
+        res.status(500).send("something went wrong please contact support team")
+    // }
 })
+app.use("/", (err, req, res, next) => {
+  if(err){
+    res.status(500).send("something went wrong")
+  }
+})
+
 
 app.listen(PORT, () => {
     console.log(`server is running on port ${PORT}`)
