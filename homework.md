@@ -40,3 +40,5 @@
 - connect with the database devHubs
 - connect the function with the connectDB call in the before run the application on 8080;
 - create a userSchema and user Model in  user.js file
+- create a new instance of the user model
+- and create a api /signup and store data in the databse
