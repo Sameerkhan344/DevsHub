@@ -32,4 +32,11 @@
 - diffrence between app.use and app.all
 - write a dummy  auth middleware for admin
 - write a dummy auth middleware for all user routes, expect /user/login
-- Error Handling using app.use("/", (err,req,res,next)=>{});
+- Error Handling using app.use("/", (err,req,res,next)=>{}); 
+
+
+- create free cluster and connect with the compass
+- Install mogoose library
+- connect with the database devHubs
+- connect the function with the connectDB call in the before run the application on 8080;
+- create a userSchema and user Model in  user.js file

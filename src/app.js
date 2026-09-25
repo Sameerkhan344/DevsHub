@@ -1,62 +1,35 @@
 const express = require("express");
+const { connectDB } = require("./config/db");
+const User = require("./models/user");
 
 const app = express();
 
 const PORT = 8080;
-const { adminAuth, userAuth } = require("./middlewares/auth")
 
-// app.use("/test", (req, res) => {
-//     res.send("Hello test")
-// })
-// app.use("/hello/2", (req, res) => {
-//     res.send("Hello hello")
-// })
-// app.use("/hello", (req, res) => {
-//     res.send("Hello")
-// })
-// app.use("/", (req, res) => {
-//     res.send("Hello world")
-// })
+//Create a new instance of the user model 
+app.post("/signup", async (req, res) => {
+    const user = new User({
+        firstName: "same",
+        lastName: "Khan",
+        age: 20,
+        gender: "male",
+        emailId:"same@gmail.com",
+        password:"Same123@"
+    })
+    try {
+        await user.save();
+        res.send("User added successfully");
 
-// app.get("/user/:userId/:name/:adddress",(req,res)=>{
-//     console.log(req.params)
-//     res.send({firstName:"sameer", lastName:"khan"})
-// })
+    } catch (error) {
+        res.status(400).send("User added failed", error.message);
 
-// app.post("/user",(req,res)=>{
-//     res.send("Data successfully save to the database!")
-// })
-
-// app.delete("/user",(req,res)=>{
-//     res.send("Deleted Successfully")
-// })
-
-// app.use("/user", [(req, res, next) => {
-//     console.log("req Handler routes");
-//     // next();
-//     res.send("Route");
-// }, (req, res, next) => {
-//     console.log("2nd handler route");
-//     res.send("2nd route")
-//     // next();
-// }])
-
-app.get("/getUserData", ( req, res) => {
-    // try {
-        throw new Error("sfsdfs");
-        res.send("user data sent")
-        
-    // } catch (err) {
-        res.status(500).send("something went wrong please contact support team")
-    // }
-})
-app.use("/", (err, req, res, next) => {
-  if(err){
-    res.status(500).send("something went wrong")
-  }
+    }
 })
 
 
-app.listen(PORT, () => {
-    console.log(`server is running on port ${PORT}`)
+connectDB().then(() => {
+    // console.log("databse is connectsuccesfulyyyyyy")
+    app.listen(PORT, () => {
+        console.log(`server is running on port ${PORT}`)
+    })
 })
